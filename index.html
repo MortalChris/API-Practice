@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <abbr charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <img src="#">
+    <button>Click me</button>
+<script>
+    const img = document.querySelector('img');
+    const btn = document.querySelector('button');
+    
+    btn.addEventListener('click',() =>{
+        fetcher();
+    })
+    function fetcher(){
+        fetch('https://api.giphy.com/v1/gifs/translate?api_key=Pu5jDFYOIfHD6PvHhgekBEH2pIbJ1qJk&s=cats', {mode: 'cors'})
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(response) {
+            img.src = response.data.images.original.url;
+        });
+    };
+</script>
+</body>
+</html>
