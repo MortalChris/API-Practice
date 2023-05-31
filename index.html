@@ -14,14 +14,10 @@
     btn.addEventListener('click',() =>{
         fetcher();
     })
-    function fetcher(){
-        fetch('https://api.giphy.com/v1/gifs/translate?api_key=Pu5jDFYOIfHD6PvHhgekBEH2pIbJ1qJk&s=cats', {mode: 'cors'})
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(response) {
-            img.src = response.data.images.original.url;
-        });
+    async function fetcher(){
+        const response = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=Pu5jDFYOIfHD6PvHhgekBEH2pIbJ1qJk&s=cats', {mode: 'cors'});
+        const catData = await response.json();
+        img.src = catData.data.images.original.url;
     };
 </script>
 </body>
